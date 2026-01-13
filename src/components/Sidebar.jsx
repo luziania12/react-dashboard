@@ -1,35 +1,91 @@
+import { NavLink } from "react-router-dom";
 import {
-  FaTableCellsLarge,
-  FaUser,
-  FaEnvelope,
-  FaClockRotateLeft,
-  FaListCheck,
-  FaPeopleGroup,
-  FaGear,
-  FaCircleQuestion,
-  FaShieldHalved
-} from "react-icons/fa6"
+  FaHome,
+  FaHistory,
+  FaTasks,
+  FaUsers,
+  FaCog,
+  FaLifeRing
+} from "react-icons/fa";
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen }) {
   return (
-    <aside className="sidebar">
-      <div className="sidebar-header">
-        <FaTableCellsLarge />
-        <h2>Dashboard</h2>
-      </div>
+    <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+      <h2 className="sidebar-header">Menu</h2>
 
-      <nav className="sidebar-menu">
-        <ul>
-          <li><FaUser /> Profile</li>
-          <li><FaEnvelope /> Messages</li>
-          <li><FaClockRotateLeft /> History</li>
-          <li><FaListCheck /> Tasks</li>
-          <li><FaPeopleGroup /> Communities</li>
-          <li><FaGear /> Settings</li>
-          <li><FaCircleQuestion /> Support</li>
-          <li><FaShieldHalved /> Privacy</li>
-        </ul>
-      </nav>
+      <ul className="sidebar-menu">
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "rect-holder active" : "rect-holder"
+            }
+          >
+            <FaHome />
+            <span>Início</span>
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="/history"
+            className={({ isActive }) =>
+              isActive ? "rect-holder active" : "rect-holder"
+            }
+          >
+            <FaHistory />
+            <span>História</span>
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="/tasks"
+            className={({ isActive }) =>
+              isActive ? "rect-holder active" : "rect-holder"
+            }
+          >
+            <FaTasks />
+            <span>Tarefas</span>
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="/communities"
+            className={({ isActive }) =>
+              isActive ? "rect-holder active" : "rect-holder"
+            }
+          >
+            <FaUsers />
+            <span>Comunidades</span>
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="/settings"
+            className={({ isActive }) =>
+              isActive ? "rect-holder active" : "rect-holder"
+            }
+          >
+            <FaCog />
+            <span>Configurações</span>
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="/support"
+            className={({ isActive }) =>
+              isActive ? "rect-holder active" : "rect-holder"
+            }
+          >
+            <FaLifeRing />
+            <span>Suporte</span>
+          </NavLink>
+        </li>
+      </ul>
     </aside>
-  )
+  );
 }

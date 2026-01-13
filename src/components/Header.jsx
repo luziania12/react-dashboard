@@ -1,36 +1,44 @@
-import { FaMagnifyingGlass, FaBell } from "react-icons/fa6"
+import { FaBars, FaMagnifyingGlass, FaBell } from "react-icons/fa6";
 
-export default function Header() {
+export default function Header({ toggleSidebar }) {
   return (
     <header className="header">
-      
-      <div className="search-bar">
-        <FaMagnifyingGlass />
-        <input type="text" placeholder="Search..." />
-      </div>
+      {/* Botão flutuante do sidebar */}
+      <button
+        className="sidebar-toggle"
+        onClick={toggleSidebar}
+        aria-label="Abrir menu"
+      >
+        <FaBars />
+      </button>
 
-     
-      <div className="user-info">
-        <FaBell />
-        <img src="../../public/images/logo_mc.png" alt="User avatar" />
-        <p><strong>Marciel Silva</strong></p>
-      </div>
+      {/* Área esquerda */}
+      <div className="header-left">
+        <img
+          src="/images/logo_mc.png"
+          alt="Logo MC Móveis"
+          className="logo"
+        />
 
-     
-      <div className="welcome">
-        <img src="../../public/images/logo_mc.png" alt="User avatar" />
-        <div>
-          <p>Hi there,</p>
-          <h2>MC Móveis (@mcmoveis)</h2>
+        <div className="search-bar">
+          <FaMagnifyingGlass className="search-icon" />
+          <input type="text" placeholder="Search..." />
         </div>
       </div>
 
-      
-      <div className="header-buttons">
-        <button>New</button>
-        <button>Upload</button>
-        <button>Share</button>
+      {/* Área direita */}
+      <div className="header-right">
+        <div className="user-info">
+          <p><strong>MC Móveis</strong></p>
+          <FaBell />
+        </div>
+
+        <div className="header-buttons">
+          <button>New</button>
+          <button>Upload</button>
+          <button>Share</button>
+        </div>
       </div>
     </header>
-  )
+  );
 }
